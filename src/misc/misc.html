@@ -1,0 +1,8 @@
+<template>
+	<require from="./focustest"></require>
+	<require from="./test1"></require>
+
+	<focustest value.two-way="rootValue"></focustest>
+	<hr>
+	<test1 message.bind="'Hello ' + rootValue"></test1>
+</template>
