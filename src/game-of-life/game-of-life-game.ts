@@ -19,7 +19,7 @@ export class GameOfLifeGame {
 
   game: GameOfLife;
 
-  private intervalId: number = null;
+  private intervalId: number | null = null;
 
   constructor() {
     this.sizeChanged();
@@ -100,16 +100,18 @@ export class GameOfLifeGame {
       canvas.height = (game.height * cellSize) + 1;
 
       const context = canvas.getContext("2d");
-      context.save();
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      for (let x = 0; x < game.width; ++x) {
-        for (let y = 0; y < game.height; ++y) {
-          const alive = game.cellAlive(x, y);
-          context.fillStyle = alive ? liveColor : deadColor
-          context.fillRect((x * cellSize) + 1, (y * cellSize) + 1, cellSize - 1, cellSize - 1);
+      if (context) {
+        context.save();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        for (let x = 0; x < game.width; ++x) {
+          for (let y = 0; y < game.height; ++y) {
+            const alive = game.cellAlive(x, y);
+            context.fillStyle = alive ? liveColor : deadColor
+            context.fillRect((x * cellSize) + 1, (y * cellSize) + 1, cellSize - 1, cellSize - 1);
+          }
         }
+        context.restore();
       }
-      context.restore();
     }
   }
 

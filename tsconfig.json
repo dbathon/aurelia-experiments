@@ -4,7 +4,7 @@
     "module": "es2015",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "allowJs": true,

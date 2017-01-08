@@ -8,7 +8,7 @@ export class NurikabeBoard {
   nurikabe: Nurikabe = new Nurikabe();
 
   boardString: string = "##5  ###1#6#  #1### ##### ## #3#   ## # ### ## # #1# ## ##### ###1#  #8#1#### 4##";
-  error: string;
+  error?: string;
 
   constructor(bindingEngine: BindingEngine) {
     this.parse();

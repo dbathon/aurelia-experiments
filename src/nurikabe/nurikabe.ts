@@ -9,13 +9,13 @@ export class Cell {
 
   constructor(public readonly owner: Nurikabe,
     public readonly x: number, public readonly y: number,
-    public value: string, public readonly solution: string = null) { }
+    public value: string, public readonly solution: string | null = null) { }
 
   static parse(owner: Nurikabe, x: number, y: number, cellString: string): Cell {
     if (Cell.NUMBER_PATTERN.test(cellString)) {
       return new Cell(owner, x, y, cellString, cellString);
     }
-    let solution: string;
+    let solution: string | null = null;
     if ("#" === cellString) {
       solution = Cell.BLACK;
     }
@@ -26,7 +26,7 @@ export class Cell {
   }
 
   toggle() {
-    let newValue: string;
+    let newValue: string = this.value;
     if (this.value === Cell.BLACK) {
       newValue = Cell.EMPTY;
     }
@@ -43,7 +43,7 @@ export class Cell {
   }
 
   get correct(): boolean {
-    return this.solution && this.solution === this.value;
+    return !!(this.solution && this.solution === this.value);
   }
 
   get numberCell(): boolean {
