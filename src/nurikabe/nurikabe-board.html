@@ -1,21 +1,27 @@
 <template>
   <require from="./nurikabe-cell"></require>
-  <h1>Nurikabe</h1>
+  <h1 class="title">Nurikabe</h1>
   <form submit.trigger="parse()">
-    <input type="text" value.bind="boardString" size="100">
-    <button type="submit">Parse</button>
+    <div class="control has-addons">
+      <div class="control">
+        <input class="input" type="text" value.bind="boardString" size="100">
+      </div>
+      <div class="control">
+        <button class="button is-primary" type="submit">Parse</button>
+      </div>
+    </div>
   </form>
-  <div if.bind="error" style="color: red;">Error: ${error}</div>
-  <div>Solved: ${nurikabe.solved}</div>
-  <table style="border: none;	border-collapse: collapse; empty-cells: show;">
+  <div if.bind="error" class="notification is-danger">Error: ${error}</div>
+  <div class="notification is-info">Solved: ${nurikabe.solved}</div>
+  <table style="border: none;	border-collapse: collapse; empty-cells: show; width: auto;">
     <tr repeat.for="row of nurikabe.cells">
       <td as-element="nurikabe-cell" cell.bind="cell" repeat.for="cell of row"></td>
     </tr>
   </table>
-  <hr>  
-  <table style="border: none;	border-collapse: collapse; empty-cells: show;">
+  <hr>
+  <table style="border: none;	border-collapse: collapse; empty-cells: show; width: auto;">
     <tr repeat.for="row of nurikabe.cells">
       <td as-element="nurikabe-cell" cell.bind="cell" repeat.for="cell of row"></td>
     </tr>
-  </table>  
+  </table>
 </template>

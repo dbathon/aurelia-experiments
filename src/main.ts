@@ -1,6 +1,6 @@
 import { Aurelia } from 'aurelia-framework';
 
-import '../styles/styles.css';
+import '../styles/styles.scss';
 
 // declare webpack define
 declare const __DEV__: boolean;

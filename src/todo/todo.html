@@ -1,18 +1,26 @@
 <template>
-  <h3>TODO</h3>
+  <h1 class="title">TODO</h1>
 
-  <ul>
-    <li repeat.for="todo of todos">
-      <input type="checkbox" checked.bind="todo.done">
-      <span css="text-decoration: ${todo.done ? 'line-through' : 'none'}">
-        ${todo.description}
-      </span>
-      <button click.trigger="removeTodo(todo)">Remove</button>
-    </li>
-  </ul>
+  <div class="control">
+    <form submit.trigger="addTodo()">
+      <div class="control has-addons">
+        <input class="input" type="text" value.bind="todoDescription">
+        <button class="button is-primary" type="submit" disabled.bind="!todoDescription">Add #${todos.length + 1} ${todoDescription}</button>
+      </div>
+    </form>
+  </div>
 
-  <form submit.trigger="addTodo()">
-    <input type="text" value.bind="todoDescription">
-    <button type="submit" disabled.bind="!todoDescription">Add #${todos.length + 1} ${todoDescription}</button>
-  </form>
+  <div class="box">
+    <ul>
+      <li repeat.for="todo of todos">
+        <div class="control">
+          <label class="checkbox" css="text-decoration: ${todo.done ? 'line-through' : 'none'}">
+            <input type="checkbox" checked.bind="todo.done">
+            ${todo.description}
+          </label>
+          <button class="delete" click.trigger="removeTodo(todo)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
