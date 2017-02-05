@@ -4,8 +4,16 @@
   <div class="control">
     <form submit.trigger="addTodo()">
       <div class="control has-addons">
-        <input class="input" type="text" value.bind="todoDescription">
-        <button class="button is-primary" type="submit" disabled.bind="!todoDescription">Add #${todos.length + 1} ${todoDescription}</button>
+        <input
+          class="input"
+          type="text"
+          value.bind="todoDescription"
+        >
+        <button
+          class="button is-primary"
+          type="submit"
+          disabled.bind="!todoDescription"
+        >Add #${todos.length + 1} ${todoDescription}</button>
       </div>
     </form>
   </div>
@@ -14,11 +22,19 @@
     <ul>
       <li repeat.for="todo of todos">
         <div class="control">
-          <label class="checkbox" css="text-decoration: ${todo.done ? 'line-through' : 'none'}">
-            <input type="checkbox" checked.bind="todo.done">
-            ${todo.description}
+          <label
+            class="checkbox"
+            css="text-decoration: ${todo.done ? 'line-through' : 'none'}"
+          >
+            <input
+              type="checkbox"
+              checked.bind="todo.done"
+            > ${todo.description}
           </label>
-          <button class="delete" click.trigger="removeTodo(todo)"></button>
+          <button
+            class="delete"
+            click.trigger="removeTodo(todo)"
+          ></button>
         </div>
       </li>
     </ul>

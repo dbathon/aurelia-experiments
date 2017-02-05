@@ -1,4 +1,12 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "html.format.wrapLineLength": 120,
+  "html.format.wrapAttributes": "force-expand-multiline",
+  "html.format.preserveNewLines": true,
+  "html.format.maxPreserveNewLines": 1,
+  "html.format.endWithNewline": true,
+  "html.format.unformatted": "a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, map, object, q, samp, small, span, strong, sub, sup, textarea, tt, var"
 }

@@ -3,11 +3,8 @@
     "AureliaEffect.aurelia",
     "msjsdiag.debugger-for-chrome",
     "steoates.autoimport",
-    "EditorConfig.EditorConfig",
     "christian-kohler.path-intellisense",
     "behzad88.Aurelia",
-    "HookyQR.beautify",
-    "donjayamanne.githistory",
-    "robinbentley.sass-indented"
+    "donjayamanne.githistory"
   ]
 }
