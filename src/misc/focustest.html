@@ -3,6 +3,9 @@
   <p click.trigger="click()">Click to Focus and Reset</p>
   <label>
     <span css="color: ${hasFocus ? 'green' : 'red'}">hasFocus</span>
-    <input value.bind="value" focus.bind="hasFocus">
+    <input
+      value.bind="value"
+      focus.bind="hasFocus"
+    >
   </label>
 </template>
