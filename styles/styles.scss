@@ -1,2 +1,29 @@
 
 @import '../node_modules/bulma/bulma';
+
+.gol-table {
+  border: none;
+  border-collapse: collapse;
+  empty-cells: show;
+  width: auto;
+}
+
+.gol-cell {
+  padding: 0px;
+  border: 1px solid white;
+}
+
+.nurikabe-board {
+  border: none;
+  border-collapse: collapse;
+  empty-cells: show;
+  width: auto;
+}
+
+.nurikabe-cell {
+  font-size: 24pt;
+  height: 1.5em;
+  width: 1.5em;
+  border: 1px solid black;
+  text-align: center;
+}

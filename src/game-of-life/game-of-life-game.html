@@ -92,14 +92,15 @@
       ></canvas>
       <table
         if.bind="displayTable"
-        style="border: none; border-collapse: collapse; empty-cells: show; width: auto;"
+        class="gol-table"
       >
         <tr repeat.for="row of game.cells">
           <td
             cell.bind="cell"
             repeat.for="cell of row"
             click.delegate="click(cell)"
-            css="height: ${cellSize}px; width: ${cellSize}px; border: 1px solid white; padding: 0px; background-color: ${cell.alive ? 'red' : 'lightgray'};"
+            class="gol-cell"
+            css="height: ${cellSize}px; width: ${cellSize}px; background-color: ${cell.alive ? 'red' : 'lightgray'};"
           ></td>
         </tr>
       </table>

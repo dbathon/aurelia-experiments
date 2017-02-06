@@ -24,7 +24,7 @@
     class="notification is-danger"
   >Error: ${error}</div>
   <div class="notification is-info">Solved: ${nurikabe.solved}</div>
-  <table style="border: none; border-collapse: collapse; empty-cells: show; width: auto;">
+  <table class="nurikabe-board">
     <tr repeat.for="row of nurikabe.cells">
       <td
         as-element="nurikabe-cell"
@@ -34,7 +34,7 @@
     </tr>
   </table>
   <hr>
-  <table style="border: none; border-collapse: collapse; empty-cells: show; width: auto;">
+  <table class="nurikabe-board">
     <tr repeat.for="row of nurikabe.cells">
       <td
         as-element="nurikabe-cell"
