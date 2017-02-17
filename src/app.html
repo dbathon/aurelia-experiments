@@ -1,16 +1,14 @@
 <template>
-  <nav class="nav has-shadow">
-    <div class="nav-left">
-      <p class="nav-item"><strong>Aurelia Experiments</strong></p>
-      <a
-        repeat.for="item of router.navigation"
-        class="nav-item is-tab ${item.isActive ? 'is-active' : ''}"
-        href.bind="item.href"
-      >${item.title}</a>
-    </div>
-  </nav>
+  <header>
+    <span class="title">Aurelia Experiments</span>
+    <a
+      repeat.for="item of router.navigation"
+      class="${item.isActive ? 'active' : ''}"
+      href.bind="item.href"
+    >${item.title}</a>
+  </header>
 
-  <div class="section">
+  <div>
     <router-view></router-view>
   </div>
 </template>

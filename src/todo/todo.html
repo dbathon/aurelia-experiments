@@ -1,42 +1,43 @@
 <template>
-  <h1 class="title">TODO</h1>
+  <div class="padding-1">
+    <h1>TODO</h1>
 
-  <div class="control">
-    <form submit.trigger="addTodo()">
-      <div class="control has-addons">
-        <input
-          class="input"
-          type="text"
-          value.bind="todoDescription"
-        >
-        <button
-          class="button is-primary"
-          type="submit"
-          disabled.bind="!todoDescription"
-        >Add #${todos.length + 1} ${todoDescription}</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="box">
-    <ul>
-      <li repeat.for="todo of todos">
-        <div class="control">
-          <label
-            class="checkbox"
-            css="text-decoration: ${todo.done ? 'line-through' : 'none'}"
+    <div class="flex-column separate-1">
+      <form submit.trigger="addTodo()">
+        <div class="control-row">
+          <input
+            type="text"
+            value.bind="todoDescription"
           >
-            <input
-              type="checkbox"
-              checked.bind="todo.done"
-            > ${todo.description}
-          </label>
           <button
-            class="delete"
-            click.trigger="removeTodo(todo)"
-          ></button>
+            class="primary"
+            type="submit"
+            disabled.bind="!todoDescription"
+          >Add #${todos.length + 1} ${todoDescription}</button>
         </div>
-      </li>
-    </ul>
+      </form>
+
+      <div>
+        <ul>
+          <li repeat.for="todo of todos">
+            <div>
+              <label
+                class="no-block"
+                css="text-decoration: ${todo.done ? 'line-through' : 'none'}"
+              >
+                <input
+                  type="checkbox"
+                  checked.bind="todo.done"
+                > ${todo.description}
+              </label>
+              <button
+                class="small"
+                click.trigger="removeTodo(todo)"
+              >x</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>

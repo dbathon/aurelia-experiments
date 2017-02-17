@@ -1,40 +1,40 @@
 <template>
   <require from="./module-tab-content"></require>
-  <h1 class="title">Compose</h1>
-  <div class="control">
-    <span repeat.for="module of availableModules">
-      <button
-      class="button"
-      click.trigger="addModule(module)"
-    >Add ${module.title}</button>
-    </span>
-  </div>
-  <hr>
 
-  <div class="tabs is-boxed">
-    <ul>
-      <li
-        repeat.for="tab of tabs"
-        class="${tab === activeTab ? 'is-active' : ''}"
-      >
-        <div>
-          <a click.trigger="setActive(tab)">${tab.module.title}
+  <div class="padding-1">
+    <h1>Compose</h1>
+    <div class="control-row">
+      <button
+        repeat.for="module of availableModules"
+        click.trigger="addModule(module)"
+      >Add ${module.title}</button>
+    </div>
+    <hr>
+
+    <div>
+      <ul>
+        <li
+          repeat.for="tab of tabs"
+          class="${tab === activeTab ? 'active' : ''}"
+        >
+          <div>
+            <a click.trigger="setActive(tab)">${tab.module.title}
             <button
-              class="delete is-small"
+              class="small"
               click.trigger="removeTab(tab)"
-            ></button>
+            >x</button>
           </a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div>
-    <div
-      repeat.for="tab of tabs"
-      show.bind="tab === activeTab"
-    >
-      <module-tab-content module.bind="tab.module"></module-tab-content>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div
+        repeat.for="tab of tabs"
+        show.bind="tab === activeTab"
+      >
+        <module-tab-content module.bind="tab.module"></module-tab-content>
+      </div>
     </div>
   </div>
-
 </template>

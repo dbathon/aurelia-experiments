@@ -64,6 +64,21 @@ const coreBundles = {
   ]
 }
 
+function sassWithAutoprefixer() {
+  return sass({
+    filename: 'styles.css', allChunks: true, sourceMap: false, additionalLoaders: [{
+      loader: 'postcss-loader',
+      options: {
+        plugins: function () {
+          return [
+            require('autoprefixer')
+          ];
+        }
+      }
+    }]
+  });
+}
+
 /**
  * Main Webpack Configuration
  */
@@ -94,7 +109,7 @@ let config = generateConfig(
   aurelia({ root: rootDir, src: srcDir, title: title, baseUrl: baseUrl }),
   typescript({ options: { doTypeCheck: false, sourceMap: false, inlineSourceMap: true, inlineSources: true } }),
   html(),
-  sass({ filename: 'styles.css', allChunks: true, sourceMap: false }),
+  sassWithAutoprefixer(),
   fontAndImages(),
   globalBluebird(),
   generateIndexHtml({ minify: ENV === 'production' }),

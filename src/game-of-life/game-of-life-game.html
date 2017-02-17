@@ -1,109 +1,88 @@
 <template>
-  <h1 class="title">Game of Life</h1>
-  <div class="columns">
-    <div
-      class="column"
-      style="flex: 0 0 30em;"
-    >
-      <div class="control">
-        <button
-          class="button is-primary"
-          click.trigger="toggleRun()"
-        >${run ? 'Stop' : 'Run'}</button>
-        <button
-          class="button"
-          click.trigger="nextState()"
-        >Step</button>
-        <button
-          class="button"
-          click.trigger="randomizeCells(0.5)"
-        >Random</button>
-        <button
-          class="button"
-          click.trigger="randomizeCells(-1)"
-        >Clear</button>
-      </div>
-      <div class="notification">
-        generation: ${game.generation}
+  <div class="padding-1">
+    <h1>Game of Life</h1>
+
+    <div class="flex-row separate-1">
+      <div
+        class="flex-column separate-1"
+        style="flex: 0 0 30rem;"
+      >
+        <div class="control-row">
+          <button
+            class="primary"
+            click.trigger="toggleRun()"
+          >${run ? 'Stop' : 'Run'}</button>
+          <button click.trigger="nextState()">Step</button>
+          <button click.trigger="randomizeCells(0.5)">Random</button>
+          <button click.trigger="randomizeCells(-1)">Clear</button>
+        </div>
+        <div>
+          generation: ${game.generation}
+        </div>
+        <label>Size (${size})
+          <input
+            type="range"
+            value.bind="size"
+            min="2"
+            max="150"
+          >
+        </label>
+        <label>Wrap
+          <input
+            type="checkbox"
+            checked.bind="game.wrapAround"
+          >
+        </label>
+        <label>Delay (${delay} ms)
+          <input
+            type="range"
+            value.bind="delay"
+            min="5"
+            max="1000"
+          >
+        </label>
+        <label>Cell size (${cellSize})
+          <input
+            type="range"
+            value.bind="cellSize"
+            min="2"
+            max="15"
+          >
+        </label>
+        <label>Display canvas
+          <input
+            type="checkbox"
+            checked.bind="displayCanvas"
+          >
+        </label>
+        <label>Display table
+          <input
+            type="checkbox"
+            checked.bind="displayTable"
+          >
+        </label>
       </div>
       <div>
-        <label class="label">Size (${size})
-          <p class="control">
-            <input
-              type="range"
-              value.bind="size"
-              min="2"
-              max="150"
-            >
-          </p>
-        </label>
-        <label class="label">Wrap
-          <p class="control">
-            <input
-              type="checkbox"
-              checked.bind="game.wrapAround"
-            >
-          </p>
-        </label>
-        <label class="label">Delay (${delay} ms)
-          <p class="control">
-            <input
-              type="range"
-              value.bind="delay"
-              min="5"
-              max="1000"
-            >
-          </p>
-        </label>
-        <label class="label">Cell size (${cellSize})
-          <p class="control">
-            <input
-              type="range"
-              value.bind="cellSize"
-              min="2"
-              max="15"
-            >
-          </p>
-        </label>
-        <label class="label">Display canvas
-          <p class="control">
-            <input
-              type="checkbox"
-              checked.bind="displayCanvas"
-            >
-          </p>
-        </label>
-        <label class="label">Display table
-          <p class="control">
-            <input
-              type="checkbox"
-              checked.bind="displayTable"
-            >
-          </p>
-        </label>
+        <canvas
+          show.bind="displayCanvas"
+          element.ref="canvas"
+          click.delegate="clickCanvas($event)"
+          selectstart.delegate=""
+        ></canvas>
+        <table
+          if.bind="displayTable"
+          class="gol-table"
+        >
+          <tr repeat.for="row of game.cells">
+            <td
+              cell.bind="cell"
+              repeat.for="cell of row"
+              click.delegate="click(cell)"
+              css="height: ${cellSize}px; width: ${cellSize}px; background-color: ${cell.alive ? 'red' : 'lightgray'};"
+            ></td>
+          </tr>
+        </table>
       </div>
-    </div>
-    <div class="column">
-      <canvas
-        show.bind="displayCanvas"
-        element.ref="canvas"
-        click.delegate="clickCanvas($event)"
-        selectstart.delegate=""
-      ></canvas>
-      <table
-        if.bind="displayTable"
-        class="gol-table"
-      >
-        <tr repeat.for="row of game.cells">
-          <td
-            cell.bind="cell"
-            repeat.for="cell of row"
-            click.delegate="click(cell)"
-            class="gol-cell"
-            css="height: ${cellSize}px; width: ${cellSize}px; background-color: ${cell.alive ? 'red' : 'lightgray'};"
-          ></td>
-        </tr>
-      </table>
     </div>
   </div>
 </template>
