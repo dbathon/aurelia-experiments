@@ -11,22 +11,18 @@
     </div>
     <hr>
 
-    <div>
-      <ul>
-        <li
-          repeat.for="tab of tabs"
-          class="${tab === activeTab ? 'active' : ''}"
-        >
-          <div>
-            <a click.trigger="setActive(tab)">${tab.module.title}
-            <button
-              class="small"
-              click.trigger="removeTab(tab)"
-            >x</button>
-          </a>
-          </div>
-        </li>
-      </ul>
+    <div class="tabs">
+      <a
+        repeat.for="tab of tabs"
+        class="${tab === activeTab ? 'active' : ''}"
+        click.trigger="setActive(tab)"
+      >
+        ${tab.module.title}
+        <button
+          class="small"
+          click.trigger="removeTab(tab)"
+        >x</button>
+      </a>
     </div>
     <div>
       <div
